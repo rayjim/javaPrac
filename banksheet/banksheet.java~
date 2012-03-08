@@ -1,0 +1,33 @@
+import java.io.*;
+class balancesheet
+{
+	private double balancesheet;
+
+ 	balancesheet(double init_money)
+	{
+		balancesheet = init_money;
+	}
+	void withdraw(double money)
+	{
+		balancesheet = balancesheet-money;
+	}
+	void deposit(double money)
+	{
+		balancesheet = balancesheet+money;
+}
+	void print()
+	{
+		System.out.println(balancesheet);
+	}
+}
+class blaceOpt{
+
+	public static void main(String[] args)
+	{
+	
+		balancesheet li = new balancesheet(100);
+		li.print();
+		li.withdraw(50);
+		li.print();
+	}
+}
