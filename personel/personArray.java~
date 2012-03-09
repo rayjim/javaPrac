@@ -1,7 +1,11 @@
 import java.io.*;
 import java.lang.*;
 
-class personArray{
+class personArray
+{
+	
+}
+
 
 class person{
 	private String lastName;
@@ -18,9 +22,22 @@ class person{
 		System.out.println("Last name: "+lastName+" Frist name: "+firstName+" age: "+age);
 	
 	}
-	
+	public String getLast()
+	{	return lastName;
+	}
+	String getFirst()
+	{
+		return firstName;
+	}
+	int getAge()
+	{
+		return age;
+	}
 }
 class pArray{
+	
+	//This is the main class for the human records
+
 	private int maxNum;
 	private int elemNum;
 	private person[] personArray;
@@ -35,12 +52,11 @@ class pArray{
 	{
 	     if(elemNum<maxNum)
 	     {
-		personArray[elemNum].lastName = lastName;
-		personArray[elemNum].firstName = firstName;
-		personArray[elemNum].age = age;
+		personArray[elemNum]= new person(lastName,firstName,age);
 		elemNum++;
 		System.out.println("Last name: "+lastName+" Frist name: "+firstName+" age: "+age);
 		System.out.println("Record has been inserted");
+		System.out.println("_____________________________________________________");
 		}
 	     else
 	     	System.out.println("The number of maximum records have been achieved!");
@@ -49,25 +65,81 @@ class pArray{
 	void display(){
 
 		System.out.println("The records are shown below:");
-		System.out.println("_____________________________________________________");
 		int in;
 		for(in = 0; in<elemNum;in++)
 		personArray[in].display();
 		System.out.println("_____________________________________________________");
 	}
-	
 
-}
-	public static void main(String[] args)
+	boolean delete (String lastname)
 	{
-		pArray humanResource = new pArray(2);
-		humanResource.insert("Ray","Bao",20);
-		humanResource.insert("James","Bond",30);
-		humanResource.display();
-	
+	//Delete the first person appeared in the database
+	  	int in, out;
+		for(out = 0; out<elemNum;out++)
+		{
+		 if(lastname.equals(personArray[out].getLast()))
+			break;
+		}
+		if(out==elemNum) {
+			System.out.println("No match can be founded!");
+			return false;
+		}
+		for(in= out; in<elemNum+1; in++)
+		{
+		 personArray[in]=personArray[in+1];
+		}
+		elemNum--;// this is forgotten and important mistatkes
+		System.out.println("the element "+lastname+" is deleted, successful!!!!!!!!!!!!!!!!");
+		return true;
+		
 	}
 
+	//Search algorithms for all the person with the same last name
+	public person find(String lastname)
+	{	
+		int in,out;
+		for (out = 0; out<elemNum;out++)
+		{
+			if(lastname.equals(personArray[out].getLast()))
+			{
+		 		System.out.println(lastname+"is found!!");
+				return personArray[out];
+			}
+		}
+		System.out.println("Cannot find the record");
+		return null;
+}
+}
 
 
+class personApp{
+	public static void main(String[] args)
+	{
+		int maxNum = 100;
+
+		pArray arr ;
+		arr = new pArray(maxNum);
+
+		arr.insert("Bao","Bao",20);
+		arr.insert("Nishikaze","dfond",30);
+		arr.insert("Ted","dodnd",34);
+		arr.insert("Shibata","Tadashi",60);
+		arr.insert("Yamashita","aITA",42);
+		arr.insert("Morishita","Fdnd",10);
+		arr.insert("Demes","Kond",20);
+		arr.insert("Kim","Shiwan",34);
+		arr.insert("Kan","Junji",33);
+		arr.display();
+		arr.delete("fuck");
+		arr.delete("Kan");
+		person first = arr.find("Demes");
+		if(!first)
+		{
+			first.display();
+		}
+	}
 
 }
+
+
+

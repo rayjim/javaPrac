@@ -22,9 +22,22 @@ class person{
 		System.out.println("Last name: "+lastName+" Frist name: "+firstName+" age: "+age);
 	
 	}
-	
+	public String getLast()
+	{	return lastName;
+	}
+	String getFirst()
+	{
+		return firstName;
+	}
+	int getAge()
+	{
+		return age;
+	}
 }
 class pArray{
+	
+	//This is the main class for the human records
+
 	private int maxNum;
 	private int elemNum;
 	private person[] personArray;
@@ -58,19 +71,72 @@ class pArray{
 		System.out.println("_____________________________________________________");
 	}
 
-}
+	boolean delete (String lastname)
+	{
+	//Delete the first person appeared in the database
+	  	int in, out;
+		for(out = 0; out<elemNum;out++)
+		{
+		 if(lastname.equals(personArray[out].getLast()))
+			break;
+		}
+		if(out==elemNum) {
+			System.out.println("No match can be founded!");
+			return false;
+		}
+		for(in= out; in<elemNum+1; in++)
+		{
+		 personArray[in]=personArray[in+1];
+		}
+		elemNum--;// this is forgotten and important mistatkes
+		System.out.println("the element "+lastname+" is deleted, successful!!!!!!!!!!!!!!!!");
+		return true;
+		
+	}
 
+	//Search algorithms for all the person with the same last name
+	public person find(String lastname)
+	{	
+		int in,out;
+		for (out = 0; out<elemNum;out++)
+		{
+			if(lastname.equals(personArray[out].getLast()))
+			{
+		 		System.out.println(lastname+"is found!!");
+				return personArray[out];
+			}
+		}
+		System.out.println("Cannot find the record");
+		return null;
+}
+}
 
 
 class personApp{
 	public static void main(String[] args)
 	{
-		pArray humanResource ;
-		humanResource = new pArray(2);
-		humanResource.insert("Ray","Bao",20);
-		humanResource.insert("James","Bond",30);
-		humanResource.display();
-	
+		int maxNum = 100;
+
+		pArray arr ;
+		arr = new pArray(maxNum);
+
+		arr.insert("Bao","Bao",20);
+		arr.insert("Nishikaze","dfond",30);
+		arr.insert("Ted","dodnd",34);
+		arr.insert("Shibata","Tadashi",60);
+		arr.insert("Yamashita","aITA",42);
+		arr.insert("Morishita","Fdnd",10);
+		arr.insert("Demes","Kond",20);
+		arr.insert("Kim","Shiwan",34);
+		arr.insert("Kan","Junji",33);
+		arr.display();
+		arr.delete("fuck");
+		arr.delete("Kan");
+		person first = arr.find("Demes");
+		if(first!=null)
+		{
+			first.display();
+		}
 	}
 
 }
