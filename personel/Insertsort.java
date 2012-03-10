@@ -1,24 +1,24 @@
-
-public class Selsort extends sortAlg
+public class Insertsort extends sortAlg
 {
         public person[] sort(person[] personArray, int elemNum)
         {
             
-               int out, in,max;
+               int out, in,ii;
                 person pm;
                 for(out = 0; out <elemNum; out++)
                 {
-                    max = out;
-                    for(in = out+1; in<elemNum; in++)
+                    pm = personArray[out];
+                    for(in = 0; in< out; in++)
                         {
-                            if(personArray[in].getLast().compareTo(personArray[max].getLast())>0)
-                                max = in;
+                            if(personArray[in].getLast().compareTo(pm.getLast())>0)
+                                break;
                             }
-                            if(max!=out)
+                           if(in!=out)
                             {
-                            pm = personArray[out];
-                            personArray[out] = personArray[max];
-                            personArray[max] = pm;
+                                for(ii = out; ii> in; ii--){
+                                 personArray[ii]=personArray[ii-1];
+                                }
+                                personArray[in] = pm;
                             }
                     }
                     return personArray;

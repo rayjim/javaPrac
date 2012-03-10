@@ -122,6 +122,12 @@ class pArray{
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
+            public boolean insertSort()
+            {   
+                Insertsort sort = new Insertsort();
+                personArray = sort.sort(personArray, elemNum);
+                    return true;
+                }
 
 }
 
@@ -150,6 +156,8 @@ class personApp{
                 arr.bubSort();
                 arr.display();
                 arr.selSort();
+                arr.display();
+                arr.insertSort();
                 arr.display();
 	}
 
