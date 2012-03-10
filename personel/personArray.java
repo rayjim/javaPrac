@@ -63,7 +63,7 @@ class pArray{
 
 	}
 	void display(){
-
+                System.out.println("There are "+elemNum+" records!!");
 		System.out.println("The records are shown below:");
 		int in;
 		for(in = 0; in<elemNum;in++)
@@ -108,7 +108,56 @@ class pArray{
 		}
 		System.out.println("Cannot find the record");
 		return null;
+
 }
+        public boolean swap(person p1, person p2)
+        {
+                
+                person pm;              //middle repference for swap
+                pm = p1;
+                p1 = p2;
+                p2 = pm;
+                return true;
+            }
+        public boolean bubSort()
+        {       
+               int out,in;
+               person pm;              //middle repference for swap
+               for (out = elemNum-1;out>-1;out--)
+               {     for (in = 0; in < out; in++)
+                     if(personArray[in].getLast().compareTo(personArray[in+1].getLast())>0)
+                   {
+//Unfortunatly, we cannot pass the value to change the contents.
+                    pm = personArray[in];
+                    personArray[in] = personArray[in+1];
+                    personArray[in+1] = pm;
+                       
+                       }}
+            
+                return true;            
+            }
+            public boolean selSort()
+            {
+               int out, in,max;
+                person pm;
+                for(out = 0; out <elemNum; out++)
+                {
+                    max = out;
+                    for(in = out+1; in<elemNum; in++)
+                        {
+                            if(personArray[in].getLast().compareTo(personArray[max].getLast())>0)
+                                max = in;
+                            }
+                            if(max!=out)
+                            {
+                            pm = personArray[out];
+                            personArray[out] = personArray[max];
+                            personArray[max] = pm;
+                            }
+                    }
+                    return true;
+                }
+
 }
 
 
@@ -132,11 +181,11 @@ class personApp{
 		arr.display();
 		arr.delete("fuck");
 		arr.delete("Kan");
-		person first = arr.find("Demes");
-		if(first!=null)
-		{
-			first.display();
-		}
+
+                arr.bubSort();
+                arr.display();
+                arr.selSort();
+                arr.display();
 	}
 
 }
