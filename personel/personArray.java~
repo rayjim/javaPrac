@@ -37,17 +37,17 @@ class person implements Comparable<person>{
 		return getLast().compareTo(person.getLast());
 	}
 }
-class pArray{
+class pArray<T extends person>{
 	
 	//This is the main class for the human records
 
 	private int maxNum;
 	private int elemNum;
-	private person[] personArray;
+	private T[] personArray;
 	pArray(int max)
 	{
 		maxNum = max;
-		personArray = new person[max];
+		personArray = new T[max];
 		System.out.println("The system has the capacity of "+max);
 		elemNum=0;
 	}
@@ -55,7 +55,7 @@ class pArray{
 	{
 	     if(elemNum<maxNum)
 	     {
-		personArray[elemNum]= new person(lastName,firstName,age);
+		personArray[elemNum]= new T(lastName,firstName,age);
 		elemNum++;
 		System.out.println("Last name: "+lastName+" Frist name: "+firstName+" age: "+age);
 		System.out.println("Record has been inserted");
@@ -97,7 +97,7 @@ class pArray{
 	}
 
 	//Search algorithms for all the person with the same last name
-	public person find(String lastname)
+	public T find(String lastname)
 	{	
 		int in,out;
 		for (out = 0; out<elemNum;out++)
@@ -114,7 +114,7 @@ class pArray{
 }
         public boolean bubSort()
         {      
-                Bubsort<person> sort = new Bubsort();
+                Bubsort<T> sort = new Bubsort<T>();
                 System.out.println("This is the bubble sort");
                 personArray = sort.sort(personArray,elemNum);
                 
@@ -124,14 +124,14 @@ class pArray{
             {   
 
                 System.out.println("This is the select sort");
-                Selsort<person> sort = new Selsort();
+                Selsort<T> sort = new Selsort<T>();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
             public boolean insertSort()
             {  
                 System.out.println("This is the insert sort");
-                Insertsort<person> sort = new Insertsort();
+                Insertsort<T> sort = new Insertsort<T>();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
@@ -144,8 +144,8 @@ class personApp{
 	{
 		int maxNum = 100;
 
-		pArray arr ;
-		arr = new pArray(maxNum);
+		pArray<person> arr ;
+		arr = new pArray<person>(maxNum);
 
 		arr.insert("Bao","Bao",20);
 		arr.insert("Nishikaze","dfond",30);
