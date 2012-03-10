@@ -112,18 +112,22 @@ class pArray{
         public boolean bubSort()
         {      
                 Bubsort sort = new Bubsort();
+                System.out.println("This is the bubble sort");
                 personArray = sort.sort(personArray,elemNum);
                 
                 return true;            
             }
             public boolean selSort()
             {   
+
+                System.out.println("This is the select sort");
                 Selsort sort = new Selsort();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
             public boolean insertSort()
-            {   
+            {  
+                System.out.println("This is the insert sort");
                 Insertsort sort = new Insertsort();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
