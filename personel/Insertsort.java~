@@ -1,4 +1,4 @@
-public class Insertsort<T extends Comparable> implements Sort<T>
+public class Insertsort<T extends Comparable> extends Sort<T>
 {
         public T[] sort(T[] array, int elemNum)
         {

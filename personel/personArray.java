@@ -6,8 +6,7 @@ class personArray
 	
 }
 
-
-class person{
+class person implements Comparable<person>{
 	private String lastName;
 	private String firstName;
 	private int age;
@@ -32,6 +31,10 @@ class person{
 	int getAge()
 	{
 		return age;
+	}
+	public int compareTo(person person)
+	{
+		return getLast().compareTo(person.getLast());
 	}
 }
 class pArray{
@@ -111,7 +114,7 @@ class pArray{
 }
         public boolean bubSort()
         {      
-                Bubsort sort = new Bubsort();
+                Bubsort<person> sort = new Bubsort<person>();
                 System.out.println("This is the bubble sort");
                 personArray = sort.sort(personArray,elemNum);
                 
@@ -121,14 +124,14 @@ class pArray{
             {   
 
                 System.out.println("This is the select sort");
-                Selsort sort = new Selsort();
+                Selsort<person> sort = new Selsort<person>();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
             public boolean insertSort()
             {  
                 System.out.println("This is the insert sort");
-                Insertsort sort = new Insertsort();
+                Insertsort<person> sort = new Insertsort<person>();
                 personArray = sort.sort(personArray, elemNum);
                     return true;
                 }

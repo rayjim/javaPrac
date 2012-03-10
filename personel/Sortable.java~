@@ -1,0 +1,4 @@
+interface Sortable{
+	int compareTo( person content);
+
+}

@@ -1,0 +1,3 @@
+public interface Sort<T>{
+    public interface T[] sort(T[] T, int elemNum);
+}

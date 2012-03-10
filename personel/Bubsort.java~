@@ -1,4 +1,4 @@
-public class Bubsort<T extends Comparable> implements Sort<T>
+public class Bubsort<T extends Comparable> extends Sort<T>
  {   //This class provide various sort methods for the 
     public T[] sort(T[] array, int elemNum)
     {

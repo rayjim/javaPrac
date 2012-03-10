@@ -6,8 +6,7 @@ class personArray
 	
 }
 
-
-class person{
+class person implements Comparable<person>{
 	private String lastName;
 	private String firstName;
 	private int age;
@@ -32,6 +31,10 @@ class person{
 	int getAge()
 	{
 		return age;
+	}
+	public int compareTo(person person)
+	{
+		return getLast().compareTo(person.getLast());
 	}
 }
 class pArray{
@@ -63,14 +66,13 @@ class pArray{
 
 	}
 	void display(){
-
+                System.out.println("There are "+elemNum+" records!!");
 		System.out.println("The records are shown below:");
 		int in;
 		for(in = 0; in<elemNum;in++)
 		personArray[in].display();
 		System.out.println("_____________________________________________________");
 	}
-
 	boolean delete (String lastname)
 	{
 	//Delete the first person appeared in the database
@@ -84,7 +86,7 @@ class pArray{
 			System.out.println("No match can be founded!");
 			return false;
 		}
-		for(in= out; in<elemNum+1; in++)
+		for(in= out; in<elemNum; in++)
 		{
 		 personArray[in]=personArray[in+1];
 		}
@@ -108,7 +110,32 @@ class pArray{
 		}
 		System.out.println("Cannot find the record");
 		return null;
+
 }
+        public boolean bubSort()
+        {      
+                Bubsort<person> sort = new Bubsort();
+                System.out.println("This is the bubble sort");
+                personArray = sort.sort(personArray,elemNum);
+                
+                return true;            
+            }
+            public boolean selSort()
+            {   
+
+                System.out.println("This is the select sort");
+                Selsort<person> sort = new Selsort();
+                personArray = sort.sort(personArray, elemNum);
+                    return true;
+                }
+            public boolean insertSort()
+            {  
+                System.out.println("This is the insert sort");
+                Insertsort<person> sort = new Insertsort();
+                personArray = sort.sort(personArray, elemNum);
+                    return true;
+                }
+
 }
 
 
@@ -132,11 +159,13 @@ class personApp{
 		arr.display();
 		arr.delete("fuck");
 		arr.delete("Kan");
-		person first = arr.find("Demes");
-		if(!first)
-		{
-			first.display();
-		}
+
+                arr.bubSort();
+                arr.display();
+                arr.selSort();
+                arr.display();
+                arr.insertSort();
+                arr.display();
 	}
 
 }
