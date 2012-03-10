@@ -70,7 +70,6 @@ class pArray{
 		personArray[in].display();
 		System.out.println("_____________________________________________________");
 	}
-
 	boolean delete (String lastname)
 	{
 	//Delete the first person appeared in the database
@@ -84,7 +83,7 @@ class pArray{
 			System.out.println("No match can be founded!");
 			return false;
 		}
-		for(in= out; in<elemNum+1; in++)
+		for(in= out; in<elemNum; in++)
 		{
 		 personArray[in]=personArray[in+1];
 		}
@@ -110,51 +109,17 @@ class pArray{
 		return null;
 
 }
-        public boolean swap(person p1, person p2)
-        {
-                
-                person pm;              //middle repference for swap
-                pm = p1;
-                p1 = p2;
-                p2 = pm;
-                return true;
-            }
         public boolean bubSort()
-        {       
-               int out,in;
-               person pm;              //middle repference for swap
-               for (out = elemNum-1;out>-1;out--)
-               {     for (in = 0; in < out; in++)
-                     if(personArray[in].getLast().compareTo(personArray[in+1].getLast())>0)
-                   {
-//Unfortunatly, we cannot pass the value to change the contents.
-                    pm = personArray[in];
-                    personArray[in] = personArray[in+1];
-                    personArray[in+1] = pm;
-                       
-                       }}
-            
+        {      
+                Bubsort sort = new Bubsort();
+                personArray = sort.sort(personArray,elemNum);
+                
                 return true;            
             }
             public boolean selSort()
-            {
-               int out, in,max;
-                person pm;
-                for(out = 0; out <elemNum; out++)
-                {
-                    max = out;
-                    for(in = out+1; in<elemNum; in++)
-                        {
-                            if(personArray[in].getLast().compareTo(personArray[max].getLast())>0)
-                                max = in;
-                            }
-                            if(max!=out)
-                            {
-                            pm = personArray[out];
-                            personArray[out] = personArray[max];
-                            personArray[max] = pm;
-                            }
-                    }
+            {   
+                Selsort sort = new Selsort();
+                personArray = sort.sort(personArray, elemNum);
                     return true;
                 }
 
