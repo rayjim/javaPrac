@@ -1,0 +1,109 @@
+import java.io.*;
+class stackPrac{}
+
+class Stack{
+	int top;
+	char[]	chStack;
+	int maxSize;
+	Stack(int max)
+	{
+		top = -1;
+		this.maxSize = max;
+		chStack = new char[max];
+	}
+	public boolean isFull()
+	{
+		return (top == maxSize-1);
+
+	}
+	public boolean isEmpty()
+	{
+		return (top == -1);
+	}
+	public char pop()
+	{
+		return chStack[top--];
+	}
+	public boolean push (char objects)
+	{
+		if(top<maxSize)
+		{
+			top++;
+			chStack[top]=objects;
+			return true;
+		}
+		return false;
+	}
+	public char peek()
+	{
+		return chStack[top];
+	}
+}
+	class CharOpt{
+		public static boolean checkChar(String inputs)
+		{
+			int ii;
+			char a,b;
+			Stack charStack = new Stack(30);
+			for(ii = 0; ii<inputs.length(); ii++)
+			{
+				a = inputs.charAt(ii);
+				switch(a){
+				case '{':
+				case '[':
+				case '(':
+					charStack.push(a);
+					break;
+				case '}':
+					if(charStack.pop()!='{'){
+					System.out.println("Incorrect match");
+					return false;}
+					break;
+				case ']':
+					if(charStack.pop()!='[')
+					{System.out.println("Incorrect match");
+					return false;}
+					break;
+				case ')':
+				
+					if(charStack.pop()!='(')
+					{System.out.println("Incorrect match");
+					return false;
+					} 
+					break;
+				default: break;
+				
+				}
+			}
+			if(!charStack.isEmpty())
+			{
+				System.out.println("Incorrct match, no enough");
+				return false;
+			}
+			System.out.println("Correct match!!");
+			return true;
+		
+		}
+	}
+	class TestOpt{
+		public static void main(String args[])
+		{
+			try{
+			String inputs = getString();
+			CharOpt.checkChar(inputs);
+			}
+			catch (Exception ex)
+			{
+				
+			}
+		}
+		public static String getString() throws IOException
+		{
+			
+			InputStreamReader isr = new InputStreamReader(System.in);
+			BufferedReader br = new BufferedReader(isr);
+			String inputs = br.readLine();
+			return inputs;
+
+		}
+	}

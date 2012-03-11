@@ -1,0 +1,15 @@
+class stack<T> {
+	private int maxSize;
+	private T[] stackArr;
+	private int top;
+	public stack (int s)
+	{
+		maxSize = s;
+		stackArr= (T[]) new Object[maxSize];
+		top = -1;
+	
+	}
+	
+	
+
+}
