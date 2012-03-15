@@ -1,6 +1,6 @@
 public class Bubsort<T extends Comparable> extends Sort<T>
  {   //This class provide various sort methods for the 
-    public T[] sort(T[] array, int elemNum)
+    public boolean sort(T[] array, int elemNum)
     {
         
                int out,in;
@@ -15,6 +15,6 @@ public class Bubsort<T extends Comparable> extends Sort<T>
                     array[in+1] = pm;
                        
                        }}
-            return array;
+            return true;
         }
 }

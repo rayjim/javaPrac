@@ -6,7 +6,7 @@ class personArray
 	
 }
 
-class person implements Comparable<person>{
+class person implements Comparable{
 	private String lastName;
 	private String firstName;
 	private int age;
@@ -32,9 +32,9 @@ class person implements Comparable<person>{
 	{
 		return age;
 	}
-	public int compareTo(person person)
+	public int compareTo(Object person)
 	{
-		return getLast().compareTo(person.getLast());
+		return getLast().compareTo(((person)person).getLast());
 	}
 }
 class pArray{
@@ -116,25 +116,30 @@ class pArray{
         {      
                 Bubsort<person> sort = new Bubsort<person>();
                 System.out.println("This is the bubble sort");
-                personArray = sort.sort(personArray,elemNum);
+                return sort.sort(personArray,elemNum);
                 
-                return true;            
             }
             public boolean selSort()
             {   
 
                 System.out.println("This is the select sort");
                 Selsort<person> sort = new Selsort<person>();
-                personArray = sort.sort(personArray, elemNum);
-                    return true;
+                return sort.sort(personArray, elemNum);
                 }
             public boolean insertSort()
             {  
                 System.out.println("This is the insert sort");
                 Insertsort<person> sort = new Insertsort<person>();
-                personArray = sort.sort(personArray, elemNum);
-                    return true;
-                }
+                return sort.sort(personArray, elemNum);
+                
+		}
+		public boolean mergeSort()
+		{
+			System.out.println("This is the merge sort");
+			MergeSort<person> sort = new MergeSort<person>();
+			person[] workSpace = new person[elemNum];
+			return sort.sort(workSpace,personArray,elemNum);
+		}
 
 }
 
@@ -164,7 +169,7 @@ class personApp{
                 arr.display();
                 arr.selSort();
                 arr.display();
-                arr.insertSort();
+                arr.mergeSort();
                 arr.display();
 	}
 

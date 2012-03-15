@@ -1,3 +1,3 @@
-public interface Sort<T>{
-    public  T[] sort(T[] T, int elemNum);
+ public interface Sort<T>{
+    public boolean sort(T[] T, int elemNum);
 }

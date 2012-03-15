@@ -1,6 +1,6 @@
 public class Selsort<T extends Comparable> implements Sort<T>
 {
-        public T[] sort(T[] array, int elemNum)
+        public boolean sort(T[] array, int elemNum)
         {
             
                int out, in,max;
@@ -20,7 +20,7 @@ public class Selsort<T extends Comparable> implements Sort<T>
                             array[max] = pm;
                             }
                     }
-                    return array;
+                    return true;
             }
     
     }

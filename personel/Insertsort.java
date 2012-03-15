@@ -1,6 +1,6 @@
 public class Insertsort<T extends Comparable> implements Sort<T>
 {
-        public T[] sort(T[] array, int elemNum)
+        public boolean sort(T[] array, int elemNum)
         {
             
                int out, in,ii;
@@ -21,7 +21,7 @@ public class Insertsort<T extends Comparable> implements Sort<T>
                                 array[in] = pm;
                             }
                     }
-                    return array;
+                    return true;
             }
     
     }
