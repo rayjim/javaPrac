@@ -1,7 +1,10 @@
 public class node{
  
- int key;
- node leftchild;
- node rightchild;
-
+ public int data;
+ public node leftchild;
+ public node rightchild;
+ node(int datas)
+ {
+ 	data = datas;
+ }
 }
